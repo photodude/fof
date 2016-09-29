@@ -80,11 +80,6 @@ matrix:
      - php: 5.3
        env: JVERSION_TEST=4.0-dev
 
-branches:
-  only:
-    - development
-    - debug-travis
-
 before_install:
   - git clone -b "$JVERSION_TEST" https://github.com/joomla/joomla-cms.git Tests/environments/"$JVERSION_TEST"
 
