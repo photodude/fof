@@ -30,10 +30,10 @@ install:
   - composer install
 
 before_script:
-  - mysql -u root -e 'create database fof_test;'
-  - mysql -u root -e "CREATE USER 'fof_db'@'localhost' IDENTIFIED BY 'fof';"
-  - mysql -u root -e "GRANT ALL PRIVILEGES ON fof_test.* TO 'fof_db'@'%' IDENTIFIED BY 'fof';"
-  - mysql -u root -e "GRANT ALL PRIVILEGES ON fof_test.* TO 'fof_db'@'localhost' IDENTIFIED BY 'fof';"
+  - mysql -u root -e 'create database foftest;'
+  - mysql -u root -e "CREATE USER 'fofdb'@'localhost' IDENTIFIED BY 'fof';"
+  - mysql -u root -e "GRANT ALL PRIVILEGES ON foftest.* TO 'fofdb'@'%' IDENTIFIED BY 'fof';"
+  - mysql -u root -e "GRANT ALL PRIVILEGES ON foftest.* TO 'fofdb'@'localhost' IDENTIFIED BY 'fof';"
   - mysql -u root -e 'FLUSH PRIVILEGES;'
 
 after_script:

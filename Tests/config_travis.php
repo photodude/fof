@@ -8,7 +8,7 @@
 $fofTestConfig = array(
 	// Connection details to Travis database
     'host'     => '127.0.0.1',
-    'user'     => 'fof_db',
+    'user'     => 'fofdb',
     'password' => 'fof',
-    'db'       => 'fof_test',
+    'db'       => 'foftest',
 );
