@@ -22,11 +22,6 @@ matrix:
   allow_failures:
     - php: nightly
 
-branches:
-  only:
-    - development
-    - debug-travis
-
 before_install:
   - git clone -b "$JVERSION_TEST" https://github.com/joomla/joomla-cms.git Tests/environments/"$JVERSION_TEST"
 
