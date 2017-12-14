@@ -86,7 +86,7 @@ abstract class DatabaseTest extends \PHPUnit_Extensions_Database_TestCase
 
             // P.A. Test database prefix is fixed with jos_ so we can setup common tables
             $options = array (
-                'driver'	=> ((isset ($config)) && ($config->get('dbtype') != 'mysqli')) ? $config->get('dbtype') : 'mysql',
+                'driver'	=> ((isset ($config)) && ($config->get('dbtype') != 'mysqli')) ? $config->get('dbtype') : 'mysqli',
                 'host' 		=> $config->get('host', '127.0.0.1'),
                 'user' 		=> $config->get('user', 'utuser'),
                 'password' 	=> $config->get('password', 'ut1234'),
