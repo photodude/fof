@@ -6,6 +6,7 @@
         beStrictAboutOutputDuringTests="true"
         beStrictAboutTestSize="true"
         colors="true"
+        debug="true"
 >
     <testsuites>
         <testsuite name="FOF Unit Tests">
