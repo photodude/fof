@@ -54,10 +54,14 @@ ini_set('zend.ze1_compatibility_mode', '0');
 error_reporting(E_ALL & ~E_STRICT);
 ini_set('display_errors', 1);
 
-// Fix magic quotes on PHP 5.3
-if (version_compare(PHP_VERSION, '5.4.0', 'lt'))
+/**
+  * PHPUnit 6 introduced a breaking change that
+  * removed PHPUnit_Framework_TestCase as a base class,
+  * and replaced it with \PHPUnit\Framework\TestCase
+  */
+if (!class_exists('\PHPUnit_Framework_TestCase') && class_exists('\PHPUnit\Framework\TestCase'))
 {
-	ini_set('magic_quotes_runtime', 0);
+    class_alias('\PHPUnit\Framework\TestCase', '\PHPUnit_Framework_TestCase');
 }
 
 // Fixed timezone to preserve our sanity
