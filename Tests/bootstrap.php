@@ -54,6 +54,21 @@ ini_set('zend.ze1_compatibility_mode', '0');
 error_reporting(E_ALL & ~E_STRICT);
 ini_set('display_errors', 1);
 
+/**
+  * PHPUnit 6 introduced a breaking change that
+  * removed PHPUnit_Framework_TestCase as a base class,
+  * and replaced it with \PHPUnit\Framework\TestCase
+  */
+if (!class_exists('\PHPUnit_Framework_TestCase') && class_exists('\PHPUnit\Framework\TestCase'))
+{
+    class_alias('\PHPUnit\Framework\TestCase', '\PHPUnit_Framework_TestCase');
+}
+
+if (!class_exists('\PHPUnit_Extensions_Database_TestCase') && class_exists('\PHPUnit\DbUnit\TestCase'))
+{
+    class_alias('\PHPUnit_Extensions_Database_TestCase', '\PHPUnit\DbUnit\TestCase');
+}
+
 // Fixed timezone to preserve our sanity
 @date_default_timezone_set('UTC');
 
