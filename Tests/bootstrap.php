@@ -64,6 +64,11 @@ if (!class_exists('\PHPUnit_Framework_TestCase') && class_exists('\PHPUnit\Frame
     class_alias('\PHPUnit\Framework\TestCase', '\PHPUnit_Framework_TestCase');
 }
 
+if (!class_exists('\PHPUnit_Extensions_Database_TestCase') && class_exists('\PHPUnit\Extensions\Database\TestCase'))
+{
+    class_alias('\PHPUnit_Extensions_Database_TestCase', '\PHPUnit\Extensions\Database\TestCase');
+}
+
 // Fixed timezone to preserve our sanity
 @date_default_timezone_set('UTC');
 
