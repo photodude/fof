@@ -138,14 +138,16 @@ abstract class DatabaseTest extends \PHPUnit_Extensions_Database_TestCase
 
     public static function setUpBeforeClass()
     {
-        self::rebuildContainer();
 	parent::setUpBeforeClass();
+
+        self::rebuildContainer();
     }
 
     public static function tearDownAfterClass()
     {
-        static::$container = null;
 	parent::tearDown();
+
+        static::$container = null;
     }
 
     public static function rebuildContainer()
