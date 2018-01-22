@@ -35,6 +35,8 @@ install:
   - composer install
 
 before_script:
+  # enable core dumps
+  - ulimit -c unlimited -S
   - mysql -u root -e 'create database fof_test;'
   - mysql -u root -e "CREATE USER 'fof_db'@'localhost' IDENTIFIED BY 'fof';"
   - mysql -u root -e "GRANT ALL PRIVILEGES ON fof_test.* TO 'fof_db'@'%' IDENTIFIED BY 'fof';"
@@ -46,3 +48,5 @@ after_script:
 
 after_failure:
   - find . -name 'core*' -exec .travis.scripts/debug-core.sh {} \;
+  - COREFILE=$(find . -maxdepth 1 -name "core*" | head -n 1) # find core file
+  - if [[ -f "$COREFILE" ]]; then gdb -c "$COREFILE" example -ex "thread apply all bt" -ex "set pagination 0" -batch; fi
