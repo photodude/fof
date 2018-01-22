@@ -39,5 +39,5 @@ before_script:
 after_script:
   - cat Tests/debug.txt
 
-notifications:
-  email: false
+after_failure:
+  - find . -name \*core\* -exec ./.travis.scripts/debug-core.sh {} \;
