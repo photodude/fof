@@ -1,4 +1,4 @@
 #!/bin/sh
 
-PHP_BINARY=`which php`
-gdb -batch -ex "bt full" -ex "quit" "${PHP_BINARY}" "${1}"
+PHP=/home/travis/.phpenv/versions/`php -r 'echo PHP_VERSION;'`/bin/php
+echo "backtrace full" | gdb $PHP $1
