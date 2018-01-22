@@ -40,4 +40,4 @@ after_script:
   - cat Tests/debug.txt
 
 after_failure:
-  - find . -name \*core\* -exec ./.travis.scripts/debug-core.sh {} \;
+  - find . -name 'core*' -exec .travis.scripts/debug-core.sh {} \;
