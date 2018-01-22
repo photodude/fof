@@ -24,6 +24,7 @@ matrix:
 
 before_install:
   - git clone -b "$JVERSION_TEST" https://github.com/joomla/joomla-cms.git Tests/environments/"$JVERSION_TEST"
+  - chmod +x .travis.scripts/debug-core.sh
 
 install:
   - composer selfupdate
