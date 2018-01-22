@@ -35,10 +35,7 @@ before_install:
   - ulimit -c
   - ulimit -a -S
   - ulimit -a -H
-  - cat /proc/sys/kernel/core_pattern
-  - cat /etc/default/apport
   - service --status-all || true
-  - initctl list || true
 
 install:
   - composer selfupdate
