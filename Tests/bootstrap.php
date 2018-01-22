@@ -50,7 +50,7 @@ if (false == include_once __DIR__ . '/../vendor/autoload.php')
 TravisLogger::log(4, 'Autoloader included');
 
 //try without zend garbage collection
-ini_set('zend.enable_gc', '0');
+//ini_set('zend.enable_gc', '0');
 
 // Don't report strict errors. This is needed because sometimes a test complains about arguments passed as reference
 ini_set('zend.ze1_compatibility_mode', '0');
