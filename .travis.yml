@@ -13,9 +13,13 @@ php:
   - 5.4
   - nightly
 
-
 env:
   - JVERSION_TEST=staging
+
+addons:
+  apt:
+    packages:
+    - gdb
 
 matrix:
   fast_finish: true
