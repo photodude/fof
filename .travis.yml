@@ -4,15 +4,28 @@ git:
   submodules: false
 
 language: php
-php:
-  - 7.2
-  - 7.1
-  - 7.0
-  - 5.6
-  - 5.5
-  - 5.4
-  - nightly
+#php:
+  #- 7.2
+  #- 7.1
+  #- 7.0
+  #- 5.6
+  #- 5.5
+  #- 5.4
+  #- nightly
 
+matrix:
+  fast_finish: true
+  include:
+    - php: 5.6
+      addons:
+        apt:
+          packages:
+          - php5-dbg
+    - php: 7.2
+      addons:
+        apt:
+          packages:
+          - php7-dbg
 env:
   - JVERSION_TEST=staging
 
