@@ -29,28 +29,20 @@ matrix:
 before_install:
   - git clone -b "$JVERSION_TEST" https://github.com/joomla/joomla-cms.git Tests/environments/"$JVERSION_TEST"
   - chmod +x .travis.scripts/debug-core.sh
-  # enable core dumps
-  # What is the current file size max for core files?
-  # It is usually 0, which means no core file will be dumped if there is a crash 
-  - ulimit -c
-  - ulimit -a -S
-  - ulimit -a -H
-  - service --status-all || true
 
 install:
   - composer selfupdate
   - composer install
 
 before_script:
+  # enable core dumps
+  - ulimit -a
+  - ulimit -c unlimited || true
   - mysql -u root -e 'create database fof_test;'
   - mysql -u root -e "CREATE USER 'fof_db'@'localhost' IDENTIFIED BY 'fof';"
   - mysql -u root -e "GRANT ALL PRIVILEGES ON fof_test.* TO 'fof_db'@'%' IDENTIFIED BY 'fof';"
   - mysql -u root -e "GRANT ALL PRIVILEGES ON fof_test.* TO 'fof_db'@'localhost' IDENTIFIED BY 'fof';"
   - mysql -u root -e 'FLUSH PRIVILEGES;'
-
-script:
-  # Set the ulimit
-  - ulimit -c unlimited -S
 
 after_script:
   - cat Tests/debug.txt
