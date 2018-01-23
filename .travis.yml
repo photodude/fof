@@ -18,7 +18,7 @@ matrix:
       addons:
         apt:
           packages:
-          - php7-dbg
+          #- php7-dbg #there is no such package in travis
           - gdb
   allow_failures:
     - php: nightly
