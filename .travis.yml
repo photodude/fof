@@ -48,6 +48,6 @@ after_script:
   - cat Tests/debug.txt
 
 after_failure:
-  - find . -iname 'core*' ! -iname '*.php' -exec .travis.scripts/debug-core.sh {} \;
+  - find . -iname 'core*' ! -iname '*.php' ! -iname '*.js' -exec .travis.scripts/debug-core.sh {} \;
   - COREFILE=$(find . -maxdepth 1 -name "core*" | head -n 1) # find core file
   - if [[ -f "$COREFILE" ]]; then gdb -c "$COREFILE" example -ex "thread apply all bt" -ex "set pagination 0" -batch; fi
