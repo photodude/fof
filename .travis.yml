@@ -4,14 +4,6 @@ git:
   submodules: false
 
 language: php
-#php:
-  #- 7.2
-  #- 7.1
-  #- 7.0
-  #- 5.6
-  #- 5.5
-  #- 5.4
-  #- nightly
 
 matrix:
   fast_finish: true
@@ -21,23 +13,18 @@ matrix:
         apt:
           packages:
           - php5-dbg
+          - gdb
     - php: 7.2
       addons:
         apt:
           packages:
           - php7-dbg
-env:
-  - JVERSION_TEST=staging
-
-addons:
-  apt:
-    packages:
-    - gdb
-
-matrix:
-  fast_finish: true
+          - gdb
   allow_failures:
     - php: nightly
+
+env:
+  - JVERSION_TEST=staging
 
 before_install:
   - git clone -b "$JVERSION_TEST" https://github.com/joomla/joomla-cms.git Tests/environments/"$JVERSION_TEST"
